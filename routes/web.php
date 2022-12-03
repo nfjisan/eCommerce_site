@@ -25,4 +25,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('category',[CategoryController::class, 'store']);
     Route::get('category/{category}/edit',[CategoryController::class, 'edit']);
     Route::put('category/{category}',[CategoryController::class, 'update']);
+
+    // brand route
+
+    Route::get('brand',App\Http\Livewire\Admin\Brand\Index::class);
 });
