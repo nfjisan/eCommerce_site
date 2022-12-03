@@ -61,6 +61,8 @@
     <!-- End custom js for this page-->
 
     @livewireScripts
+
+    @yield('script')
 </body>
 
 </html>
