@@ -35,4 +35,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('product',[ProductController::class, 'index']);
     Route::get('product/create',[ProductController::class, 'create']);
     Route::post('product',[ProductController::class, 'store']);
+    Route::get('product/{product}/edit',[ProductController::class, 'edit']);
+    Route::put('product/{product}',[ProductController::class, 'update']);
+    Route::get('product/{product_id}/delete',[ProductController::class, 'destroy']);
+
+    Route::get('product-image/{product_image_id}/delete',[ProductController::class, 'destroyImage']);
 });
