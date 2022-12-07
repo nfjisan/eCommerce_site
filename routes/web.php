@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -47,12 +48,22 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
 
 
-    // ColorController
+    // Color Controller
     Route::get('colors',[ColorController::class, 'index']);
     Route::get('colors/create',[ColorController::class, 'create']);
     Route::post('colors',[ColorController::class, 'store']);
     Route::get('colors/{colors}/edit',[ColorController::class, 'edit']);
     Route::put('colors/{colors}',[ColorController::class, 'update']);
     Route::get('colors/{colors_id}/delete',[ColorController::class, 'destroy']);
+
+
+     // Slider Controller
+
+     Route::get('sliders',[SliderController::class, 'index']);
+     Route::get('sliders/create',[SliderController::class, 'create']);
+     Route::post('sliders',[SliderController::class, 'store']);
+     Route::get('sliders/{sliders}/edit',[SliderController::class, 'edit']);
+     Route::put('sliders/{sliders}',[SliderController::class, 'update']);
+     Route::get('sliders/{sliders}/delete',[SliderController::class, 'destroy']);
 
 });
