@@ -40,6 +40,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('product/{product}',[ProductController::class, 'update']);
     Route::get('product/{product_id}/delete',[ProductController::class, 'destroy']);
 
+    Route::post('product-color/{prdct_color_id}',[ProductController::class, 'updProductQntity']);
+    Route::post('product-color/{prdct_color_id}/delete',[ProductController::class, 'deletePrdctColor']);
+
     Route::get('product-image/{product_image_id}/delete',[ProductController::class, 'destroyImage']);
 
 
