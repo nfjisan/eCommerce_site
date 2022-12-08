@@ -31,6 +31,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($validatedData['name']);
         $category->description = $validatedData['description'];
 
+        $uploadPath = 'upload/category/';
         if($request->hasFile('image')){
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
@@ -38,7 +39,7 @@ class CategoryController extends Controller
 
             $file->move('upload/category/',$filename);
 
-            $category->image = $filename;
+            $category->image = $uploadPath.$filename;
         }
 
         $category->meta_title = $validatedData['meta_title'];
@@ -68,6 +69,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($validatedData['name']);
         $category->description = $validatedData['description'];
 
+        $uploadPath = 'upload/category/';
         if($request->hasFile('image')){
 
             $path = 'upload/category/'.$category->image;
@@ -81,7 +83,7 @@ class CategoryController extends Controller
 
             $file->move('upload/category/',$filename);
 
-            $category->image = $filename;
+            $category->image = $uploadPath.$filename;
         }
 
         $category->meta_title = $validatedData['meta_title'];
