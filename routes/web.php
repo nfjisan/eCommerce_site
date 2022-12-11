@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/',[ForntendController::class, 'index']);
 Route::get('/collections',[ForntendController::class, 'categories']);
+Route::get('/collections/{category_slug}',[ForntendController::class, 'product']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

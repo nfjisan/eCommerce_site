@@ -21,4 +21,17 @@ class ForntendController extends Controller
         // return view('forntend.collection.category.index',compact('categories'));
         return view('layouts.inc.admin.forntend.collection.category.index',compact('categories'));
     }
+
+    public function product($category_slug)
+    {
+        $category = Category::where('slug',$category_slug)->first();
+
+        if($category){
+            $products = $category->products()->get();
+
+            return view('layouts.inc.admin.forntend.collection.product.index',compact('products','category'));
+        }else{
+            return redirect()->back();
+        }
+    }
 }
