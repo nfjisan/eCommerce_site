@@ -27,9 +27,8 @@ class ForntendController extends Controller
         $category = Category::where('slug',$category_slug)->first();
 
         if($category){
-            $products = $category->products()->get();
 
-            return view('layouts.inc.admin.forntend.collection.product.index',compact('products','category'));
+            return view('layouts.inc.admin.forntend.collection.product.index',compact('category'));
         }else{
             return redirect()->back();
         }
