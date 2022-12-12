@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/',[ForntendController::class, 'index']);
 Route::get('/collections',[ForntendController::class, 'categories']);
 Route::get('/collections/{category_slug}',[ForntendController::class, 'product']);
+Route::get('/collections/{category_slug}/{product_slug}',[ForntendController::class, 'productView']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -34,6 +35,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('category',[CategoryController::class, 'store']);
     Route::get('category/{category}/edit',[CategoryController::class, 'edit']);
     Route::put('category/{category}',[CategoryController::class, 'update']);
+
 
     // brand route
 

@@ -33,4 +33,24 @@ class ForntendController extends Controller
             return redirect()->back();
         }
     }
+
+    public function productView(string $category_slug, string $product_slug)
+    {
+        $category = Category::where('slug',$category_slug)->first();
+
+        if($category){
+
+            $product = $category->products()->where('slug',$product_slug)->where('status','0')->first();
+
+            if($product)
+            {
+                return view('layouts.inc.admin.forntend.collection.product.view',compact('category','product'));
+            }else{
+                return redirect()->back();
+            }
+
+        }else{
+            return redirect()->back();
+        }
+    }
 }
