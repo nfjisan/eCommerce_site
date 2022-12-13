@@ -107,6 +107,7 @@ class View extends Component
                                     'product_color_id' => $this->productColorId,
                                     'quantity' => $this->quantityCount
                                 ]);
+                                $this->emit('CartAddedUpdated');
 
                                 $this->dispatchBrowserEvent('message',[
                                     'text' =>'product added to cart',
@@ -154,6 +155,7 @@ class View extends Component
                                     'product_id' => $productId,
                                     'quantity' => $this->quantityCount
                                 ]);
+                                $this->emit('CartAddedUpdated');
 
                                 $this->dispatchBrowserEvent('message',[
                                     'text' =>'product added to cart',

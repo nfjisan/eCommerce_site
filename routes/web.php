@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Forntend\ForntendController;
@@ -26,6 +27,7 @@ Route::get('/collections/{category_slug}/{product_slug}',[ForntendController::cl
 Route::middleware(['auth'])->group(function(){
 
     Route::get('wishlist',[WishlistController::class, 'index']);
+    Route::get('cart',[CartController::class, 'index']);
 });
 
 
