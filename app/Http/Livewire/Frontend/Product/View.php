@@ -86,7 +86,17 @@ class View extends Component
             if($this->product->where('id', $productId)->where('status','0')->exists()){
                 if($this->product->productColors()->count() > 1){
                     if($this->productColorSelectedQuantity != NULL){
-                        $productColor = $this->product->productColors()->where('id',$this->productColorId)->first();
+                        if(Cart::where('user_id',auth()->user()->id)
+                        ->where('product_id', $productId)
+                        ->where('product_color_id', $this->productColorId)
+                        ->exists()){
+                            $this->dispatchBrowserEvent('message',[
+                                'text' =>'  product already added',
+                                'type' => 'warning',
+                                'status'=> 200
+                            ]);
+                        }else{
+                            $productColor = $this->product->productColors()->where('id',$this->productColorId)->first();
                         if($productColor->quantity > 0){
                             if($productColor->quantity > $this->quantityCount){
 
@@ -117,6 +127,9 @@ class View extends Component
                                 'status'=> 404
                             ]);
                         }
+                        }
+
+
                     }else{
                         $this->dispatchBrowserEvent('message',[
                             'text' =>'Select Your product color',
