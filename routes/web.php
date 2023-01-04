@@ -6,9 +6,11 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Forntend\ForntendController;
 use App\Http\Controllers\Forntend\WishlistController;
+use App\Http\Controllers\Frontend\CheckoutController;
 
 
 
@@ -28,6 +30,13 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('wishlist',[WishlistController::class, 'index']);
     Route::get('cart',[CartController::class, 'index']);
+
+    Route::get('checkout',[CheckoutController::class, 'index']);
+
+    // order route
+
+    Route::get('orders',[OrderController::class, 'index']);
+    Route::get('orders/{orderId}',[OrderController::class, 'show']);
 });
 
 
